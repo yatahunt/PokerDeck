@@ -16,8 +16,9 @@ type Deck struct {
 	cards []Card
 }
 
-func NewDeck() *Deck {
+func NewDeck(seed int64) *Deck {
 	deck := &Deck{}
+	rand.Seed(seed)
 	deck.Shuffle()
 	return deck
 }

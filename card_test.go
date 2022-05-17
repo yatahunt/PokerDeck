@@ -45,8 +45,14 @@ func TestUnmarshalJSON(t *testing.T) {
 	assert.Contains(t, cards, NewCard("Th"))
 }
 
-func TestString(t *testing.T) {
-	assert.Equal(t, "3s", NewCard("3s").String())
+func TestEasyString(t *testing.T) {
+	assert.Equal(t, "3s", NewCard("3s").EasyString())
+
+}
+func TestPrint(t *testing.T) {
+	assert.Equal(t, "3♠", NewCard("3s").Print())
+	t.Log(NewCard("3s").Print())
+
 }
 
 func TestBitRank(t *testing.T) {

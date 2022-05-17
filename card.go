@@ -20,7 +20,7 @@ var (
 )
 
 var (
-	prettySuits = map[int]string{
+	prettySuits = map[int32]string{
 		1: "\u2660", // spades
 		2: "\u2764", // hearts
 		4: "\u2666", // diamonds
@@ -52,7 +52,7 @@ func NewCard(s string) Card {
 }
 
 func (c *Card) MarshalJSON() ([]byte, error) {
-	return []byte("\"" + c.String() + "\""), nil
+	return []byte("\"" + c.EasyString() + "\""), nil
 }
 
 func (c *Card) UnmarshalJSON(b []byte) error {
@@ -60,14 +60,25 @@ func (c *Card) UnmarshalJSON(b []byte) error {
 	return nil
 }
 
-func (c Card) String() string {
-	return string(strRanks[c.Rank()]) + string(intSuitToCharSuit[c.Suit()])
+func (c Card) EasyString() (toReturn string) {
+	toReturn = string(strRanks[c.Rank()])
+	toReturn = toReturn + string(intSuitToCharSuit[c.Suit()])
+	return
 }
 
 func (c Card) Rank() int32 {
 	return (int32(c) >> 8) & 0xF
 }
 
+func (c Card) PrintRank() string {
+	return string(strRanks[c.Rank()])
+}
+func (c Card) PrintSuit() string {
+	return string(prettySuits[c.Suit()])
+}
+func (c Card) Print() string {
+	return c.PrintRank() + c.PrintSuit()
+}
 func (c Card) Suit() int32 {
 	return (int32(c) >> 12) & 0xF
 }
