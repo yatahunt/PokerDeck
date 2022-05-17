@@ -1,6 +1,7 @@
 package PokerDeck
 
 import (
+	"fmt"
 	"math/rand"
 	"time"
 )
@@ -30,7 +31,13 @@ func (deck *Deck) Shuffle() {
 		deck.cards[i], deck.cards[j] = deck.cards[j], deck.cards[i]
 	})
 }
-
+func (deck *Deck) PrintHand(hand []Card) {
+	fmt.Print("[ ")
+	for _, card := range hand {
+		fmt.Print(card.Print() + " ")
+	}
+	fmt.Print("]")
+}
 func (deck *Deck) Draw(n int) []Card {
 	cards := make([]Card, n)
 	copy(cards, deck.cards[:n])

@@ -22,7 +22,7 @@ var (
 var (
 	prettySuits = map[int32]string{
 		1: "\u2660", // spades
-		2: "\u2764", // hearts
+		2: "\u2665", // hearts
 		4: "\u2666", // diamonds
 		8: "\u2663", // clubs
 	}
