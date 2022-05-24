@@ -76,6 +76,9 @@ func (c Card) PrintRank() string {
 func (c Card) PrintSuit() string {
 	return string(prettySuits[c.Suit()])
 }
+func (c Card) PrintSuitLetter() string {
+	return string(charSuitToIntSuit[c.Suit()])
+}
 func (c Card) Print() string {
 	return c.PrintRank() + c.PrintSuit()
 }
