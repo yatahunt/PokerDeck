@@ -26,6 +26,12 @@ var (
 		4: "\u2666", // diamonds
 		8: "\u2663", // clubs
 	}
+	prettySuitsChar = map[int32]string{
+		1: "s", // spades
+		2: "h", // hearts
+		4: "d", // diamonds
+		8: "c", // clubs
+	}
 	prettyReds = [...]int{2, 4}
 )
 
@@ -76,8 +82,8 @@ func (c Card) PrintRank() string {
 func (c Card) PrintSuit() string {
 	return string(prettySuits[c.Suit()])
 }
-func (c Card) PrintSuitLetter() string {
-	return string(charSuitToIntSuit[c.Suit()])
+func (c Card) PrintSuitChar() string {
+	return prettySuitsChar[c.Suit()]
 }
 func (c Card) Print() string {
 	return c.PrintRank() + c.PrintSuit()
