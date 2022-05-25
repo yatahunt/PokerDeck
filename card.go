@@ -1,4 +1,4 @@
-package CardDeck
+package PokerDeck
 
 type Card int32
 
